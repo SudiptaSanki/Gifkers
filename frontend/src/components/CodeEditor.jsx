@@ -9,7 +9,7 @@ export function CodeEditor({ code, setCode, onGenerate, loading }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           {/* Brand Logo next to Text */}
-          <img src="/favicon.svg" alt="Gifkers Logo" className="w-8 h-8 drop-shadow-md" />
+          <img src="/favicon.png" alt="Gifkers Logo" className="w-8 h-8 drop-shadow-md rounded" />
           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
             Gifkers
           </h1>
