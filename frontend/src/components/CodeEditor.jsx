@@ -53,6 +53,11 @@ export function CodeEditor({ code, setCode, onGenerate, loading }) {
           }}
         />
       </div>
+
+      <div className="text-xs text-zinc-500 text-center px-4">
+        <strong>⚠️ Disclaimer:</strong> You are executing arbitrary Python code at your own risk. 
+        Gifkers is not responsible for infinite loops, resource exhaustion, or any damage to older machines caused by broken code.
+      </div>
     </div>
   );
 }
