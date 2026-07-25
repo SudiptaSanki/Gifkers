@@ -23,14 +23,12 @@ function App() {
     handleHeightChange,
     exportFormat,
     setExportFormat,
-    themeGradient,
-    setThemeGradient,
     handleGenerate,
     triggerDownload
   } = useStickerGenerator();
 
   return (
-    <div className="min-h-screen p-8 flex flex-col md:flex-row gap-8 bg-black text-zinc-100 font-sans">
+    <div className="min-h-screen p-6 flex flex-col md:flex-row gap-6 bg-black text-zinc-100 font-sans">
       {/* Code Editor Column */}
       <CodeEditor 
         code={code}
@@ -50,8 +48,6 @@ function App() {
           onWidthChange={handleWidthChange}
           customHeight={customHeight}
           onHeightChange={handleHeightChange}
-          themeGradient={themeGradient}
-          onSelectTheme={setThemeGradient}
           exportFormat={exportFormat}
           setExportFormat={setExportFormat}
           rawMimeType={rawMimeType}
@@ -63,7 +59,6 @@ function App() {
           stickerRef={stickerRef}
           customWidth={customWidth}
           customHeight={customHeight}
-          themeGradient={themeGradient}
           stickerData={stickerData}
           error={error}
         />

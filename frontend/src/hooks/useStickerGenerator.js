@@ -32,7 +32,6 @@ export function useStickerGenerator() {
   const [customWidth, setCustomWidth] = useState(600);
   const [customHeight, setCustomHeight] = useState(600);
   const [exportFormat, setExportFormat] = useState("raw");
-  const [themeGradient, setThemeGradient] = useState("linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)");
 
   const handleRatioChange = (newRatio) => {
     setAspectRatio(newRatio);
@@ -119,7 +118,7 @@ export function useStickerGenerator() {
       }
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.detail || err.message);
+      setError(err.response?.data?.detail || err.message || 'Failed to connect to backend server');
     } finally {
       setLoading(false);
     }
@@ -128,7 +127,7 @@ export function useStickerGenerator() {
   const triggerDownload = async () => {
     await downloadSticker({
       stickerData,
-      exportFormat,
+      exportFormat: 'raw',
       rawMimeType,
       elementRef: stickerRef
     });
@@ -152,8 +151,6 @@ export function useStickerGenerator() {
     handleHeightChange,
     exportFormat,
     setExportFormat,
-    themeGradient,
-    setThemeGradient,
     handleGenerate,
     triggerDownload
   };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeSelector } from './ThemeSelector';
 import { ExportControls } from './ExportControls';
 
 export function ControlPanel({
@@ -11,8 +10,6 @@ export function ControlPanel({
   onWidthChange,
   customHeight,
   onHeightChange,
-  themeGradient,
-  onSelectTheme,
   exportFormat,
   setExportFormat,
   rawMimeType,
@@ -23,11 +20,11 @@ export function ControlPanel({
     <div className="flex flex-wrap items-center justify-between bg-zinc-900 p-4 rounded-xl border border-zinc-800 gap-4">
       {/* Aspect Ratio & Pixel Controls */}
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-sm text-zinc-400">Frame Size:</span>
+        <span className="text-sm text-zinc-400">Canvas Size:</span>
         <select 
           value={aspectRatio} 
           onChange={(e) => onRatioChange(e.target.value)}
-          className="bg-black border border-zinc-700 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-blue-500 cursor-pointer"
+          className="bg-black border border-zinc-700 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-blue-500 cursor-pointer text-zinc-200"
         >
           <option value="auto">
             Auto / Follow Code {detectedWidth ? `(${detectedWidth} × ${detectedHeight} px)` : ''}
@@ -58,9 +55,6 @@ export function ControlPanel({
           />
           <span className="text-xs text-zinc-400">px</span>
         </div>
-
-        {/* Theme presets */}
-        <ThemeSelector currentGradient={themeGradient} onSelectTheme={onSelectTheme} />
       </div>
 
       {/* Download controls */}
