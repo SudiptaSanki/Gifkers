@@ -1,25 +1,10 @@
 import { useState, useRef } from 'react';
 import { generateStickerApi } from '../utils/api';
 import { downloadSticker } from '../utils/exportImage';
-
-const DEFAULT_CODE = `import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
-
-plt.figure(figsize=(6, 4))
-plt.plot(x, y, color='#3b82f6', linewidth=2)
-plt.title("Sine Wave", color='white')
-plt.grid(True, alpha=0.2)
-plt.gca().set_facecolor('none')
-plt.gcf().patch.set_facecolor('none')
-plt.tick_params(colors='white')
-plt.show()
-`;
+import { DEFAULT_STATIC_CODE } from '../utils/templates';
 
 export function useStickerGenerator() {
-  const [code, setCode] = useState(DEFAULT_CODE);
+  const [code, setCode] = useState(DEFAULT_STATIC_CODE);
   const [loading, setLoading] = useState(false);
   const [stickerData, setStickerData] = useState(null);
   const [rawMimeType, setRawMimeType] = useState('image/png');
