@@ -15,6 +15,7 @@
   <img src="https://img.shields.io/badge/React-19.0+-61DAFB?logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/Vite-6.0+-646CFF?logo=vite&logoColor=white" alt="Vite">
   <img src="https://img.shields.io/badge/TailwindCSS-v4.0+-06B6D4?logo=tailwindcss&logoColor=white" alt="TailwindCSS">
+  <img src="https://img.shields.io/badge/Hugging%20Face-Spaces-FFD21E?logo=huggingface&logoColor=black" alt="Hugging Face Spaces">
 </p>
 
 ---
@@ -100,6 +101,17 @@ Run the automated backend test suite:
 cd backend
 python -m pytest -v --tb=short
 ```
+
+---
+
+## 🚀 Deployment Options
+
+### Backend Hosting: Hugging Face Spaces (100% Free Docker)
+The backend container is specified in `backend/Dockerfile`.
+
+1. Create a free Space on [Hugging Face Spaces](https://huggingface.co/new-space) with **Docker** SDK (`app_port: 8000`).
+2. Add your `HF_TOKEN` and `HF_SPACE` secrets to your GitHub repository.
+3. Every push to `main` automatically deploys zero-downtime Docker instances via `.github/workflows/deploy-huggingface.yml`.
 
 ---
 

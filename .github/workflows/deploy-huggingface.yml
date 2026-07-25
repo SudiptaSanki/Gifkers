@@ -14,10 +14,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push Backend to Hugging Face Space
+      - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ secrets.HF_SPACE }}
         run: |
+          if [ -z "$HF_TOKEN" ] || [ -z "$HF_SPACE" ]; then
+            echo "HF_TOKEN or HF_SPACE secret not set. Skipping Hugging Face Space deployment."
+            exit 0
+          fi
           git config --global user.email "bot@gifkers.app"
           git config --global user.name "Gifkers-Bot"
-          # Sync backend folder or Docker space to HF Spaces
+          git push https://$HF_TOKEN@huggingface.co/spaces/$HF_SPACE main --force
