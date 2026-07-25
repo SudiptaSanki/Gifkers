@@ -1,7 +1,7 @@
 # Gifkers — Python Code & Visual Sticker Generator
 
 <p align="center">
-  <img src="frontend/public/favicon.svg" width="100" height="100" alt="Gifkers Logo" />
+  <img src="frontend/public/favicon.png" width="100" height="100" alt="Gifkers Logo" />
 </p>
 
 <p align="center">
