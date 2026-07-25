@@ -13,20 +13,21 @@ pushd "%~dp0"
 echo [1/3] Starting Backend Server...
 pushd backend
 
-if not exist ".venv\Scripts\activate.bat" (
-    echo   - First time setup: Creating Python virtual environment...
-    python -m venv .venv
-    if errorlevel 1 (
-        echo   [ERROR] Python is not installed or not in PATH!
-        echo   Please install Python 3.11+ from https://python.org and ensure you check "Add python.exe to PATH" during installation.
-        pause
-        exit /b 1
-    )
-    echo   - Installing Python dependencies (this takes a minute)...
-    call .venv\Scripts\activate.bat
-    pip install -r requirements.txt
-)
+if exist ".venv\Scripts\activate.bat" goto backend_ready
 
+echo   - First time setup: Creating Python virtual environment...
+python -m venv .venv
+if errorlevel 1 (
+    echo   [ERROR] Python is not installed or not in PATH!
+    echo   Please install Python 3.11+ from https://python.org and ensure you check "Add python.exe to PATH" during installation.
+    pause
+    exit /b 1
+)
+echo   - Installing Python dependencies - this takes a minute...
+call .venv\Scripts\activate.bat
+pip install -r requirements.txt
+
+:backend_ready
 set "BACKEND_DIR=%CD%"
 start "Gifkers Backend Server (DO NOT CLOSE)" /MIN /D "%BACKEND_DIR%" cmd /k "call .venv\Scripts\activate.bat & python -m uvicorn app.main:app --reload --port 8000"
 popd
@@ -38,17 +39,18 @@ timeout /t 3 /nobreak >nul
 echo [2/3] Starting Frontend Server...
 pushd frontend
 
-if not exist "node_modules" (
-    echo   - First time setup: Installing Node.js dependencies (this takes a minute)...
-    call npm install
-    if errorlevel 1 (
-        echo   [ERROR] Node.js is not installed or not in PATH!
-        echo   Please install Node.js from https://nodejs.org
-        pause
-        exit /b 1
-    )
+if exist "node_modules" goto frontend_ready
+
+echo   - First time setup: Installing Node.js dependencies - this takes a minute...
+call npm install
+if errorlevel 1 (
+    echo   [ERROR] Node.js is not installed or not in PATH!
+    echo   Please install Node.js from https://nodejs.org
+    pause
+    exit /b 1
 )
 
+:frontend_ready
 set "FRONTEND_DIR=%CD%"
 start "Gifkers Frontend Server (DO NOT CLOSE)" /MIN /D "%FRONTEND_DIR%" cmd /k "npm run dev"
 popd
