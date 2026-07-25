@@ -31,7 +31,7 @@ export function useStickerGenerator() {
   const [detectedHeight, setDetectedHeight] = useState(null);
   const [customWidth, setCustomWidth] = useState(600);
   const [customHeight, setCustomHeight] = useState(600);
-  const [exportFormat, setExportFormat] = useState("raw");
+  const [exportFormat, setExportFormat] = useState("gif");
 
   const handleRatioChange = (newRatio) => {
     setAspectRatio(newRatio);

@@ -7,7 +7,7 @@ export function CodeEditor({ code, setCode, onGenerate, loading }) {
     <div className="w-full md:w-1/2 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-          Python Code Sticker Generator
+          Gifkers
         </h1>
         <button 
           onClick={onGenerate}

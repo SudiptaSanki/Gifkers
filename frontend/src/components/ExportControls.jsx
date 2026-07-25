@@ -8,8 +8,6 @@ export function ExportControls({
   stickerData,
   onDownload
 }) {
-  const isGif = rawMimeType === 'image/gif';
-
   return (
     <div className="flex items-center gap-2 ml-auto">
       <select
@@ -17,17 +15,9 @@ export function ExportControls({
         onChange={(e) => setExportFormat(e.target.value)}
         className="bg-black border border-zinc-700 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-blue-500 cursor-pointer text-zinc-200"
       >
-        {/* Default option based on backend output type */}
-        <option value="raw">
-          {isGif ? 'Original (.gif)' : 'Original (.png)'}
-        </option>
-        
-        {/* Always provide explicit formats as requested */}
-        {!isGif && <option value="gif">Animated (.gif)</option>}
-        {isGif && <option value="png">Static (.png)</option>}
+        <option value="gif">Animated (.gif)</option>
+        <option value="png">Static (.png)</option>
         <option value="jpeg">Static (.jpeg)</option>
-        
-        {/* Specialty format: WhatsApp Sticker */}
         <option value="sticker">WhatsApp Sticker (.webp)</option>
       </select>
 
