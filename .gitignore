@@ -30,3 +30,12 @@ Thumbs.db
 *.log
 scratch/
 tmp/
+
+# Ignore local generated stickers/images from repo
+*.gif
+*.jpg
+*.jpeg
+*.png
+*.webp
+!frontend/public/
+!frontend/src/assets/
