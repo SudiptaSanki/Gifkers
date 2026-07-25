@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://gifkers.web.app/$1",
+      "permanent": true
+    }
+  ]
+}
