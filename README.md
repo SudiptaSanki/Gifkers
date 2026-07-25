@@ -21,7 +21,13 @@
 
 ## How It Works
 
-Write any Python code using Matplotlib, Pillow, Seaborn, OpenCV, or NumPy. Click **Generate** and the backend executes your code in an isolated sandbox, captures the visual output (plots, images, GIFs), and streams it back to a live preview canvas. Download the result as a raw sticker, animated GIF, or a framed mockup card.
+Write any Python code using Matplotlib, Pillow, Seaborn, OpenCV, or NumPy. Click **Generate** and the backend executes your code in an isolated sandbox, captures the visual output (plots, images, GIFs), and streams it back to a live preview canvas.
+
+### Export Formats (Our Specialty)
+Unlike basic code snippet tools, Gifkers is designed for creating highly customized, transparent, and animated chat stickers:
+- **Original (.gif / .png)**: Downloads the raw, high-resolution output directly from the Python backend (preserves full animations).
+- **Static (.png / .jpg)**: Converts any complex plot or animated GIF into a clean, flat static image.
+- **WhatsApp Sticker (.webp)**: Automatically crops, scales, and formats your visual into a **512 × 512 transparent WebP** file. This is the exact strict format required by WhatsApp for both static and animated stickers. Just download and import it straight into WhatsApp!
 
 ```mermaid
 graph LR
