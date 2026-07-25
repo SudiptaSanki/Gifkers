@@ -82,7 +82,12 @@ cd Gifkers
 Double-click **`run.bat`**.
 
 > **First run** — automatically creates a Python virtual environment, installs all backend & frontend dependencies.  
-> **Every run after** — skips installation, launches both servers instantly.
+> **Every run after** — skips installation, launches both servers instantly and opens your browser.
+
+#### 🛠️ Troubleshooting `run.bat`
+- **"Network Error" when clicking Generate**: The backend Python server hasn't finished booting yet, or Python failed to install its dependencies. Ensure you checked the box **"Add python.exe to PATH"** when installing Python. Try closing the black terminal windows and running `run.bat` again.
+- **Browser doesn't open automatically**: Your system might not have a default browser set for `http://` links. Simply copy `http://localhost:5173` and paste it into your browser manually.
+- **Node/Python Not Found Error**: You must install the prerequisites linked above. After installing, restart your computer so your system recognizes the new PATH variables.
 
 ### Manual Setup
 
