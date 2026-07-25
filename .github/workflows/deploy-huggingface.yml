@@ -1,0 +1,23 @@
+name: Sync to Hugging Face Spaces
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync-to-hub:
+    name: Sync Backend to Hugging Face Space
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push Backend to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config --global user.email "bot@gifkers.app"
+          git config --global user.name "Gifkers-Bot"
+          # Sync backend folder or Docker space to HF Spaces

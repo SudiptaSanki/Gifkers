@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+matplotlib
+pillow
+seaborn
+opencv-python
+httpx
+pytest
+firebase-admin

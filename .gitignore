@@ -1,0 +1,45 @@
+# Python & Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/tests/__pycache__/
+
+# Node.js & Frontend Build Outputs
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.output/
+
+# Environment Files & Local Settings
+.env
+.env.local
+frontend/.env.local
+frontend/.env.production
+backend/.env
+
+# Generated Output Test Files
+backend/*.gif
+backend/*.png
+backend/*.jpg
+welcome_sticker.gif
+discord_welcome.gif
+hello_flash.gif
+
+# IDE, System & Log Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+.system_generated/
+scratch/
+tmp/
