@@ -76,15 +76,14 @@ popd
 timeout /t 4 /nobreak >nul
 
 :: -------------------------------------------------------
-:: 3. OPEN BROWSER
+:: 3. READY
 :: -------------------------------------------------------
-echo [3/3] Opening browser...
-start http://localhost:5173
-
+echo [3/3] Launching application...
 echo.
 echo ===================================================
 echo   Gifkers is running!
-echo   App: http://localhost:5173
+echo   App should open automatically in your browser.
+echo   If not, go to: http://localhost:5173
 echo   Close the minimized server windows to stop.
 echo ===================================================
 echo.
