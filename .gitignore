@@ -8,38 +8,25 @@ __pycache__/
 *$py.class
 *.so
 .pytest_cache/
-backend/__pycache__/
-backend/app/__pycache__/
-backend/tests/__pycache__/
 
 # Node.js & Frontend Build Outputs
 node_modules/
-frontend/node_modules/
 frontend/dist/
 frontend/build/
 .output/
 
-# Environment Files & Local Settings
+# Environment Files
 .env
 .env.local
-frontend/.env.local
-frontend/.env.production
-backend/.env
+.env.production
 
-# Generated Output Test Files
-backend/*.gif
-backend/*.png
-backend/*.jpg
-welcome_sticker.gif
-discord_welcome.gif
-hello_flash.gif
-
-# IDE, System & Log Files
+# IDE & OS Files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Logs & Temporary Files
 *.log
-.system_generated/
 scratch/
 tmp/

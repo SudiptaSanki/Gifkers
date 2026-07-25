@@ -1,11 +1,11 @@
-# Gifkers - Offline Python Code & Visual Sticker Generator
+# Gifkers — Python Code & Visual Sticker Generator
 
 <p align="center">
   <img src="frontend/public/favicon.svg" width="100" height="100" alt="Gifkers Logo" />
 </p>
 
 <p align="center">
-  <b>An open-source offline tool to turn Python code snippets and visual outputs into high-resolution framed stickers and animated GIFs.</b>
+  <b>Turn Python code snippets and visual outputs into high-resolution framed stickers and animated GIFs.</b>
 </p>
 
 <p align="center">
@@ -19,87 +19,126 @@
 
 ---
 
-## 🌟 Key Features
+## How It Works
 
-- **VS Code Monaco Editor**: Write, paste, and run Python code directly in your browser.
-- **Universal Library Support**: Execute Matplotlib, Seaborn, Pillow, OpenCV, and NumPy scripts locally.
-- **Automatic Code Dimension Detection**: Reads output size (e.g. `550 × 220 px`) automatically with bi-directional pixel controls.
-- **Sticker & Animated GIF Capture**: Detects generated `.gif`, `.png`, `.jpg`, `.webp` files, Matplotlib plots, or PIL image frames.
-- **Export Options**: Download raw transparent stickers/GIFs directly, or save framed card mockups in PNG, JPEG, or SVG formats.
-- **Glassmorphic Themes**: Custom background gradient presets (Electric Cyan, Sunset Glow, Neon Cyberpunk, Emerald Forest, Deep Onyx).
-
----
-
-## 🚀 System Architecture
+Write any Python code using Matplotlib, Pillow, Seaborn, OpenCV, or NumPy. Click **Generate** and the backend executes your code in an isolated sandbox, captures the visual output (plots, images, GIFs), and streams it back to a live preview canvas. Download the result as a raw sticker, animated GIF, or a framed mockup card.
 
 ```mermaid
-graph TD
-    User([User]) -->|Inputs Python Code| Editor[Monaco Code Editor]
-    User -->|Selects Size / Preset| Controls[Control Panel Toolbar]
-    
-    Editor -->|POST /api/generate| Backend[FastAPI Server :8000]
-    
-    subgraph Execution Sandbox
-        Backend --> AST[AST Security Analyzer]
-        AST -->|Validates Imports| Sandbox[Isolated Temp Directory]
-        Sandbox -->|Executes Code| CPython[CPython Runtime]
-        CPython --> FontPatch[Cross-Platform Font Resolver]
-        CPython --> Capture[Output Detector]
-        Capture -->|Disk Files .gif, .png| Detect[Image & Frame Inspector]
-        Capture -->|Matplotlib Plots| Detect
-        Capture -->|PIL Image Objects| Detect
-    end
-    
-    Detect -->|Base64 Data + Dimensions| Response[JSON API Response]
-    Response -->|Base64 Image Payload| Preview[Frame Canvas Preview]
-    
-    Controls -->|Direct Download| Download[Export Generator]
-    Download -->|Default| Raw[Raw Sticker / GIF File]
-    Download -->|Optional| Card[Framed Mockup Card PNG/JPEG/SVG]
+graph LR
+    A([You write Python code]) --> B[Monaco Editor]
+    B -->|POST /api/generate| C[FastAPI Backend]
+    C --> D{AST Security Check}
+    D -->|Safe| E[Execute in Isolated Sandbox]
+    E --> F{Detect Output}
+    F -->|Matplotlib plot| G[Capture PNG]
+    F -->|PIL Image / frames| G
+    F -->|Saved .gif / .png file| G
+    G -->|Base64 + dimensions| H[Live Preview Canvas]
+    H --> I([Download Sticker / GIF])
 ```
 
 ---
 
-## ⚡ Quick Start (Smart One-Click Launcher)
+## Tech Stack
 
-This repository includes a **Smart `run.bat` Script** designed for zero-configuration offline execution:
+### Frontend
+| Technology | Purpose |
+| :--- | :--- |
+| **React 19** | UI component framework |
+| **Vite 6** | Dev server & production bundler |
+| **TailwindCSS v4** | Dark theme responsive styling |
+| **Monaco Editor** | VS Code-powered Python code editor |
+| **Axios** | HTTP client for backend API |
+| **html-to-image** | High-DPI canvas export helper |
+| **Lucide React** | Icon set |
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/SudiptaSanki/Gifkers.git
-   cd Gifkers
-   ```
-2. Double-click **`run.bat`**.
-
-### How `run.bat` Works:
-- **First Run**: Automatically creates a Python virtual environment (`.venv`), installs backend packages, installs frontend `node_modules`, and launches the servers.
-- **Subsequent Runs**: Automatically detects existing dependencies, **skips re-installation**, and opens the web application directly in your default browser!
+### Backend
+| Dependency | Purpose |
+| :--- | :--- |
+| **FastAPI** | REST API server |
+| **Uvicorn** | ASGI server |
+| **Pillow** | Image creation, manipulation & GIF compilation |
+| **Matplotlib** | Chart & plot rendering |
+| **Seaborn** | Statistical data visualization |
+| **OpenCV** | Image processing & computer vision |
+| **NumPy** | Numerical computation for procedural graphics |
+| **Pytest** | Unit & integration testing |
 
 ---
 
-## 🛠️ Manual Installation Guide
+## Quick Start
 
-### Backend Setup
+### Prerequisites
+- **Python 3.11+** — [python.org/downloads](https://www.python.org/downloads/)
+- **Node.js 18+** — [nodejs.org](https://nodejs.org/)
+
+### One-Click Launch (Windows)
+
+```bash
+git clone https://github.com/SudiptaSanki/Gifkers.git
+cd Gifkers
+```
+
+Double-click **`run.bat`**.
+
+> **First run** — automatically creates a Python virtual environment, installs all backend & frontend dependencies.  
+> **Every run after** — skips installation, launches both servers instantly.
+
+### Manual Setup
+
+#### Backend
 ```bash
 cd backend
 python -m venv .venv
-source .venv/bin/activate        # On Windows: .venv\Scripts\activate
+.venv\Scripts\activate        # Linux/Mac: source .venv/bin/activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload --port 8000
 ```
 
-### Frontend Setup
+#### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
 ---
 
-## 🧪 Testing
+## Project Structure
 
-Run the automated backend Pytest suite:
+```
+Gifkers/
+├── backend/
+│   ├── app/
+│   │   ├── main.py          # FastAPI routes & CORS
+│   │   ├── executor.py      # Sandboxed Python execution engine
+│   │   ├── security.py      # AST pre-execution security analyzer
+│   │   ├── schemas.py       # Pydantic request/response models
+│   │   └── config.py        # App settings
+│   ├── tests/
+│   │   ├── test_main.py     # API endpoint tests
+│   │   └── test_executor.py # Execution engine tests
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # CodeEditor, ControlPanel, FrameCanvas, etc.
+│   │   ├── hooks/           # useStickerGenerator custom hook
+│   │   ├── utils/           # API client & export helpers
+│   │   └── App.jsx
+│   └── package.json
+│
+├── run.bat                  # Smart one-click launcher
+├── LICENSE
+└── README.md
+```
+
+---
+
+## Running Tests
+
 ```bash
 cd backend
 python -m pytest -v --tb=short
@@ -107,5 +146,6 @@ python -m pytest -v --tb=short
 
 ---
 
-## 📄 License
-This repository is licensed under the [MIT License](LICENSE).
+## License
+
+[MIT](LICENSE)
