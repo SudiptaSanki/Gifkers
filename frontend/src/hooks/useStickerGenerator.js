@@ -127,9 +127,8 @@ export function useStickerGenerator() {
   const triggerDownload = async () => {
     await downloadSticker({
       stickerData,
-      exportFormat: 'raw',
+      exportFormat,
       rawMimeType,
-      elementRef: stickerRef
     });
   };
 

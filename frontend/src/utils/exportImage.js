@@ -1,57 +1,70 @@
-import { toPng, toJpeg, toSvg } from 'html-to-image';
-
+/**
+ * Downloads the generated sticker in the chosen format.
+ *
+ * Format logic:
+ *  - "raw"  → saves whatever the backend returned as-is (preserves animated GIF)
+ *  - "gif"  → saves as GIF (same as raw if backend already returned gif)
+ *  - "png"  → converts to PNG (first frame only if source is GIF)
+ *  - "jpeg" → converts to JPEG (first frame only if source is GIF)
+ */
 export const downloadSticker = async ({
   stickerData,
   exportFormat,
   rawMimeType,
-  elementRef
 }) => {
   if (!stickerData) return;
 
-  // 1. Raw Output Download (Only the main sticker/GIF graphic without outer window mockup)
-  if (exportFormat === 'raw') {
+  const isGif = rawMimeType === 'image/gif';
+
+  // Raw / GIF — download as-is to preserve animation
+  if (exportFormat === 'raw' || exportFormat === 'gif') {
     const link = document.createElement('a');
-    const ext = rawMimeType === 'image/gif' ? 'gif' : 'png';
-    link.download = `sticker.${ext}`;
+    link.download = isGif ? 'sticker.gif' : 'sticker.png';
     link.href = stickerData;
     link.click();
     return;
   }
 
-  // 2. Framed Card Export
-  if (!elementRef?.current) return;
+  // PNG or JPEG — render first frame onto canvas and export
   try {
-    const el = elementRef.current;
-    const options = {
-      width: el.offsetWidth,
-      height: el.offsetHeight,
-      style: {
-        transform: 'none',
-        margin: '0',
-      },
-      pixelRatio: 3,
-      cacheBust: true
-    };
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = stickerData;
+    });
 
-    let dataUrl;
-    let filename = 'python_sticker.png';
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
 
     if (exportFormat === 'jpeg') {
-      dataUrl = await toJpeg(el, { ...options, quality: 0.95 });
-      filename = 'python_sticker.jpg';
-    } else if (exportFormat === 'svg') {
-      dataUrl = await toSvg(el, options);
-      filename = 'python_sticker.svg';
-    } else {
-      dataUrl = await toPng(el, options);
-      filename = 'python_sticker.png';
+      // Fill white background for JPEG (no transparency)
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    const link = document.createElement('a');
-    link.download = filename;
-    link.href = dataUrl;
-    link.click();
+    ctx.drawImage(img, 0, 0);
+
+    const mimeOut = exportFormat === 'jpeg' ? 'image/jpeg' : 'image/png';
+    const quality = exportFormat === 'jpeg' ? 0.95 : undefined;
+    const ext = exportFormat === 'jpeg' ? 'jpg' : 'png';
+
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `sticker.${ext}`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+      },
+      mimeOut,
+      quality
+    );
   } catch (err) {
-    console.error('Failed to export sticker image:', err);
+    console.error('Export failed:', err);
   }
 };
