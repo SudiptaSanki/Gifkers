@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:f800ffb0 t:2026-09-08T12:06:44.041Z a:bug triage b:5957 -->
+<!-- s:11ad60c3 t:2026-09-08T12:06:53.903Z a:refactored module b:5450 -->
 <!-- autobot:end -->
