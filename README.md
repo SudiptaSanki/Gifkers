@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:5a00a17f t:2026-09-08T13:05:52.875Z a:refactored module b:8360 -->
+<!-- s:9936a3ab t:2026-09-08T13:06:06.149Z a:added validation b:5943 -->
 <!-- autobot:end -->
