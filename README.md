@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:11e83486 t:2026-09-08T07:17:47.647Z a:cache optimization b:5345 -->
+<!-- s:5665c87b t:2026-09-08T12:05:58.072Z a:fixed edge case b:5681 -->
 <!-- autobot:end -->
