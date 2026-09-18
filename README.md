@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:1ed3ba68 t:2026-09-17T17:14:53.036Z a:optimized queries b:4428 -->
+<!-- s:7863525c t:2026-09-18T09:11:48.825Z a:reviewed codebase b:4800 -->
 <!-- autobot:end -->
