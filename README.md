@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:6181f710 t:2026-09-22T14:55:08.407Z a:analyzed metrics b:3142 -->
+<!-- s:80bab636 t:2026-09-22T19:49:58.865Z a:cleaned up tests b:1409 -->
 <!-- autobot:end -->
