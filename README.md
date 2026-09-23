@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:9cb0edb4 t:2026-09-23T15:02:05.144Z a:improved error handling b:5101 -->
+<!-- s:402abe80 t:2026-09-23T15:02:10.572Z a:release preparation b:864 -->
 <!-- autobot:end -->
