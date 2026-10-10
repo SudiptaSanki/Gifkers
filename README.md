@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:cbbf3a74 t:2026-10-10T18:22:51.198Z a:added validation b:3292 -->
+<!-- s:71d8d99e t:2026-10-10T18:23:05.567Z a:design discussion b:4576 -->
 <!-- autobot:end -->
