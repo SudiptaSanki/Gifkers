@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:f5800116 t:2026-10-20T17:29:40.611Z a:schema migration b:3238 -->
+<!-- s:64e4b549 t:2026-10-20T17:29:45.996Z a:bug triage b:7151 -->
 <!-- autobot:end -->
