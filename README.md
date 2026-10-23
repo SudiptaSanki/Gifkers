@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:36ebba38 t:2026-10-23T13:51:45.196Z a:resolved conflicts b:6846 -->
+<!-- s:12716c29 t:2026-10-23T13:52:00.274Z a:ci pipeline update b:1697 -->
 <!-- autobot:end -->
