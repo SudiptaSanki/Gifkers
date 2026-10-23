@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:1b724178 t:2026-10-23T13:52:09.718Z a:cache optimization b:1414 -->
+<!-- s:0b2386f5 t:2026-10-23T13:52:21.322Z a:resolved conflicts b:8630 -->
 <!-- autobot:end -->
