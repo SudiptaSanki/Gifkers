@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:2acbf48f t:2026-11-01T09:22:11.446Z a:cleaned up tests b:9358 -->
+<!-- s:57a5ee41 t:2026-11-01T09:22:23.173Z a:deployment config b:671 -->
 <!-- autobot:end -->
