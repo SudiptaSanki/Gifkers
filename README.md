@@ -163,5 +163,5 @@ python -m pytest -v --tb=short
 [MIT](LICENSE)
 
 <!-- autobot:start -->
-<!-- s:4325f1c1 t:2026-11-24T12:37:06.178Z a:reviewed pull request b:7059 -->
+<!-- s:d011a247 t:2026-11-24T12:37:16.622Z a:monitoring setup b:395 -->
 <!-- autobot:end -->
